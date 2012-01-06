@@ -112,7 +112,8 @@ module Jasmine::Headless
       return @search_paths if @search_paths
 
       @search_paths = [ Jasmine::Core.path, Jasmine::Headless.root.join('vendor/assets/javascripts').to_s ]
-      @search_paths += self.class.asset_paths
+      # Doesn't work with RubyGems 1.5.2
+      # @search_paths += self.class.asset_paths
       @search_paths += src_dir.collect { |dir| File.expand_path(dir) }
       @search_paths += asset_paths.collect { |dir| File.expand_path(dir) }
       @search_paths += spec_dir.collect { |dir| File.expand_path(dir) }
